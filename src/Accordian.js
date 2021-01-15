@@ -13,7 +13,7 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 const TreeContext = createContext();
 const useTreeContext = () => useContext(TreeContext);
 export const TreeContextProvider = (props) => (
-  <TreeContext.Provider value={props.value} {...props}>
+  <TreeContext.Provider value={props.value}>
     {props.children}
   </TreeContext.Provider>
 );
@@ -21,12 +21,12 @@ export const TreeContextProvider = (props) => (
 const AccordianContext = createContext();
 const useAccordianContext = () => useContext(AccordianContext);
 
-const useContent = () => {
+export const useContent = () => {
   const { contentRef, height, active } = useAccordianContext();
   return { contentRef, height, active };
 };
 
-const useTitle = () => {
+export const useTitle = () => {
   const { onToggle, active } = useAccordianContext();
   return { onToggle, active };
 };
@@ -45,7 +45,6 @@ export default function (props) {
   useEffect(() => {
     if (!idRef.current) {
       idRef.current = Math.random();
-      console.log("hello");
 
       treeContext.push({
         id: idRef.current,
@@ -121,7 +120,7 @@ const Title = styled.button`
 const Content = styled.ul`
   overflow: hidden;
   border: none;
-  max-height: ${(props) => (props.active ? props.height : 0)};
+  max-height: ${(props) => (props.active.on ? props.height + "px" : 0)};
   transition: max-height 1s;
 `;
 
@@ -139,10 +138,9 @@ export const AccordianTitle = (props) => {
 
 export const AccordianContent = (props) => {
   const { contentRef, height, active } = useContent();
-  console.log(height);
 
   return (
-    <Content ref={contentRef} active={active.on} height={height}>
+    <Content ref={contentRef} active={active} height={height}>
       {props.children}
     </Content>
   );
