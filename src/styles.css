@@ -1,0 +1,22 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  border: 1px solid;
+  text-align: left;
+}
+
+li {
+  padding: none;
+  list-style: none;
+}
