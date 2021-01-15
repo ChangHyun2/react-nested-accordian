@@ -9,7 +9,7 @@ const BasicUsage = () => {
   return (
     <>
       <h1>BasicUsage</h1>
-      <TreeContextProvider value={[]}>
+      <TreeContextProvider>
         <Accordian>
           {({ contentRef, active, height, onToggle }) => (
             <>
@@ -79,7 +79,7 @@ const BasicUsage = () => {
 
 const DefaultSubComponents = () => {
   return (
-    <TreeContextProvider value={[]}>
+    <TreeContextProvider>
       <Accordian>
         {() => (
           <>
@@ -131,9 +131,9 @@ const DefaultSubComponents = () => {
 
 export default function () {
   return (
-    <>
+    <div style={{ width: "15%" }}>
       <BasicUsage />
       <DefaultSubComponents />
-    </>
+    </div>
   );
 }

@@ -11,15 +11,13 @@ import useToggle from "./useToggle";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 const TreeContext = createContext();
-const useTreeContext = () => useContext(TreeContext);
 export const TreeContextProvider = (props) => (
-  <TreeContext.Provider value={props.value}>
-    {props.children}
-  </TreeContext.Provider>
+  <TreeContext.Provider value={[]}>{props.children}</TreeContext.Provider>
 );
+export const useTreeContext = () => useContext(TreeContext);
 
 const AccordianContext = createContext();
-const useAccordianContext = () => useContext(AccordianContext);
+export const useAccordianContext = () => useContext(AccordianContext);
 
 export const useContent = () => {
   const { contentRef, height, active } = useAccordianContext();
@@ -93,8 +91,7 @@ export default function (props) {
   );
 }
 
-// usage
-// Accordian render props 안에서 사용
+// default subcomponents
 
 const Title = styled.button`
   width: 100%;
